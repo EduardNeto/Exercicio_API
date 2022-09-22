@@ -1,0 +1,12 @@
+import requests, json
+
+resposta = requests.get("https://api.hgbrasil.com/finance?key=e03ed1cd")
+obj = json.loads(resposta.text)
+
+euro = obj['results']['currencies']['EUR']['buy']
+dolar = obj['results']['currencies']['USD']['buy']
+real = float(input('Insira o valor em reais a ser convertido: '))
+print('O valor em euros é €{:.2f}'.format(real * euro))
+print('O valor em dolar é ${:.2f}'.format(real * dolar))
+
+
